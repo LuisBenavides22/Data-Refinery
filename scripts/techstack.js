@@ -3,15 +3,35 @@ const contactBTN = document.getElementById("contactBTN");
 const backBTN = document.getElementById("backBTN");
 const homeBTN = document.getElementById("homeBTN");
 const techBTN = document.getElementById("techBTN");
+const displayBTN = document.getElementById("displayBTN");
 
 // Function that goes to other page
-function nextPage(element, url){
+export function nextPage(element, url){
     setTimeout(() => {
         element.addEventListener("click", () => {
             window.location.href = url;
         });
     }, 500)
 }
+export function toggle(){
+    let isLight = false;
+
+    displayBTN.onclick = function() {
+        if (!isLight){
+            document.body.classList.add("light-mode");
+            displayBTN.textContent = "Light Mode";
+        }
+        else {
+            document.body.classList.remove("light-mode");
+            displayBTN.textContent = "Dark Mode";
+            
+        }
+        isLight = !isLight;
+    };
+}
+
+
+toggle();
 
 // Function calls with button and page url
 nextPage(engineerBTN, "https://luisbenavides22.github.io/Portfolio/");
